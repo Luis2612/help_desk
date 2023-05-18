@@ -86,7 +86,16 @@
             dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf'
-        ]
+        ],
+        buttons : {
+            buttons : [
+                {
+                    extends : 'copy',
+                    className : 'btn btn-info',
+                    text : 'Copiar'
+                }
+            ],
+        }
         });
     });
 </script>

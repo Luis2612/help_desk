@@ -11,7 +11,7 @@
     <div class="container">
         <div class="card border-0 shadow my-5">
                 <div class="card-body p-5">
-                    <h1 class="fw-light">comit prueba 2 a <?php echo $_SESSION['usuario']['nombre'];?></h1>
+                    <h1 class="fw-light">BIENVENIDO <?php echo $_SESSION['usuario']['nombre'];?></h1>
                     <p class="lead">
                         <div class="row">
                             <div class="col-sm-4">Primer Apellido: <span id="paterno"></span></div>
