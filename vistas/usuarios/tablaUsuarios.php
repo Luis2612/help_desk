@@ -58,9 +58,11 @@ $respuesta = mysqli_query($conexion, $sql);
                 <td><?php echo $mostrar['ubicacion']; ?></td>
                 <td><?php echo $mostrar['sexo']; ?></td>
                 <td>
-                    <button class="btn btn-success btn-sm" >
-                        cambiar password
-                    </button>
+                <button class="btn btn-warning btn-sm" 
+                        data-toggle="modal" 
+                        data-target="#modalActualizarUsuario">
+                            Editar
+                </button>
                 </td>
                 <td>
                     <?php if ($mostrar['estatus'] == 1) {
@@ -99,10 +101,34 @@ $respuesta = mysqli_query($conexion, $sql);
 </table>
 <?php   
             include 'modalActualizar.php';
-            
             ?>
+
 <script>
     $(document).ready(function(){
         $('#tablaUsuariosDataTable').DataTable();
     });
 </script>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="modalActualizarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agctualizar Contraseña</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+     
+      
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning">Actualizar</button>
+      </div>
+    </div>
+  </div>
+    </div>
+
