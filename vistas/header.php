@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="../public/datatable/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <link rel="stylesheet" href="../public/datatable/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="../">
     <title>Help-Desk </title>
 </head>
 
