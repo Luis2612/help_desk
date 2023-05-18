@@ -24,6 +24,7 @@
     </div>
 
     <?php  
+            
             include "asignacion/modalAsignar.php";
             include "footer.php"; 
             ?>

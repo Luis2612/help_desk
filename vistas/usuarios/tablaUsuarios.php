@@ -60,8 +60,8 @@ $respuesta = mysqli_query($conexion, $sql);
                 <td>
                 <button class="btn btn-warning btn-sm" 
                         data-toggle="modal" 
-                        data-target="#modalActualizarUsuario">
-                            Editar
+                        data-target="#modalResetPassword">
+                            Cambiar contraseña
                 </button>
                 </td>
                 <td>
@@ -110,25 +110,5 @@ $respuesta = mysqli_query($conexion, $sql);
 </script>
 
 
-<!-- Modal -->
 
-<div class="modal fade" id="modalActualizarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agctualizar Contraseña</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-     
-      
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-warning">Actualizar</button>
-      </div>
-    </div>
-  </div>
-    </div>
 

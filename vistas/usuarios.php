@@ -21,6 +21,7 @@
     </div>
                 
     <?php   
+            include 'usuarios/modalResetPassword.php';
             include 'usuarios/modalAgregar.php';
 
 
