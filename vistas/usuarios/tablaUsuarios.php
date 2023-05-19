@@ -58,7 +58,7 @@ $respuesta = mysqli_query($conexion, $sql);
                 <td><?php echo $mostrar['ubicacion']; ?></td>
                 <td><?php echo $mostrar['sexo']; ?></td>
                 <td>
-                <button class="btn btn-warning btn-sm" 
+                <button class="btn btn-info btn-sm" 
                         data-toggle="modal" 
                         data-target="#modalResetPassword"
                         onclick="agregarIdUsuarioReset(<?php echo $mostrar ['idUsuario']?>)">
@@ -68,15 +68,17 @@ $respuesta = mysqli_query($conexion, $sql);
                 <td>
                     <?php if ($mostrar['estatus'] == 1) {
                     ?>
-                           
-                            <button class="btn btn-info btn-sm">
-                                 Activo
+                            <button class="btn btn-secondary btn-sm" 
+                            onclick="cambiarEstatusUsuario(<?php echo $mostrar['idUsuario']?>,<?php echo $mostrar['estatus']?>)">
+                                <span class="fas fa-power-off"></span>Off
                             </button>
                     <?php 
-                        } else {
+                        } else if($mostrar['estatus'] == 0){
                     ?>
-                            <button class="btn btn-info btn-sm">
-                                Inactivo
+                                                       
+                            <button class="btn btn-success btn-sm" 
+                            onclick="cambiarEstatusUsuario(<?php echo $mostrar['idUsuario']?>,<?php echo $mostrar['estatus']?>)">
+                                 <span class="fas fa-power-off"></span>On
                             </button>
                     <?php
                                 } 
