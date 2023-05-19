@@ -60,7 +60,8 @@ $respuesta = mysqli_query($conexion, $sql);
                 <td>
                 <button class="btn btn-warning btn-sm" 
                         data-toggle="modal" 
-                        data-target="#modalResetPassword">
+                        data-target="#modalResetPassword"
+                        onclick="agregarIdUsuarioReset(<?php echo $mostrar ['idUsuario']?>)">
                             Cambiar contraseña
                 </button>
                 </td>

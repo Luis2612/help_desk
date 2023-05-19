@@ -69,4 +69,27 @@ function actualizarUsuario(){
     return false;
 }
 
+function agregarIdUsuarioReset(idUsuario){
+    $('#idUsuarioReset').val(idUsuario);
+}
+
+function resetPassword(){
+    $.ajax({
+        type:"POST",
+        data:$('#frmActualizaPassword').serialize(),
+        url:"../procesos/usuarios/extras/resetPassword.php",
+        success:function(respuesta) {
+            respuesta = respuesta.trim();
+              if (respuesta == 1) {
+                $('#modalResetPassword').modal('hide');
+                Swal.fire(":D" , "Cambio con exito!" , "success");    
+            } else {
+                    Swal.fire(":c","Error al Cambiar" + respuesta, "error");
+            }
+
+
+        }
+    });
+    return false;
+}
 
