@@ -218,5 +218,9 @@
             return $respuesta;
             
         }
+        public function eliminarUsuario($datos) {
+            $conexion = Conexion::conectar();
+            
+        }
     }
          

@@ -109,3 +109,20 @@ function cambiarEstatusUsuario(idUsuario, estatus){
 
     });
 }
+function eliminarUsuario(){
+    $.ajax({
+        type:"POST",
+        data:$('#frmEliminarUsuario').serialize(),
+        url:"../procesos/usuarios/crud/eliminarUsuario.php",
+        success:function(respuesta) {
+            respuesta = respuesta.trim();
+            if (respuesta == 1) {
+                $('#tablaUsuarioLoad').load("usuarios/tablaUsuarios.php");
+              Swal.fire(":D" , "Usuario eliminado con extito!" , "warning");    
+          } else {
+                  Swal.fire(":c","Error al eliminar el usuario" + respuesta, "error");
+          }
+
+        }
+    });
+}

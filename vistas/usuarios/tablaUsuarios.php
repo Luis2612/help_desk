@@ -93,9 +93,13 @@ $respuesta = mysqli_query($conexion, $sql);
                 </button>
                 </td>
                 <td>
-                <button class="btn btn-danger btn-sm">
-                       Eliminar
-                    </button>
+                    <form id="frmEliminarUsuario" method="POST" onsubmit="return eliminarUsuario()">
+                        <input type="text" id="idUsuarioEliminar" hidden values="<?php echo $mostrar ['idUsuario']?>)?>">
+                        <input type="text" id="idPersonaEliminar" hidden values="<?php echo $mostrar ['idPersona']?>)?>">
+                        <button class="btn btn-danger btn-sm">
+                            <span class="fas fa-user-times"></span>
+                        </button>
+                    </form>
                 </td>
             </tr>
             <?php } ?>
