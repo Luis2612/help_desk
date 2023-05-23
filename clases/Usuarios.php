@@ -112,7 +112,7 @@
                 'oficina' => $usuario['oficina'],
                 'tipoDocumento' => $usuario['tipoDocumento'],
                 'numeroDocumento' => $usuario['numeroDocumento'],
-                'apeliidos' => $usuario['apellidos'],
+                'apellidos' => $usuario['apellidos'],
                 'nombres' => $usuario['nombres'],
                 'correo' => $usuario['correo'],
                 'telefono' => $usuario['telefono']
@@ -148,22 +148,22 @@
 
             $idPersona = self::obtenerIdPersona($datos['idUsuario']);
 
-            $sql = "UPDATE t_persona SET paterno = ?,
-                                         materno = ?,
-                                         nombre = ?,
-                                         fecha_nacimiento = ?,
-                                         sexo = ?,
+            $sql = "UPDATE t_persona SET tipo_documento = ?,
+                                         numero_documento = ?,
+                                         apellidos = ?,
+                                         nombres = ?,
                                          telefono = ?,
-                                         correo = ?
+                                         correo = ?,
+                                         oficina = ?
                     WHERE id_persona = ?";
             $query = $conexion->prepare($sql);
-            $query->bind_param('sssssssi', $datos['paterno'],
-                                           $datos['materno'],
-                                           $datos['nombre'],
-                                           $datos['fechaNacimento'],
-                                           $datos['sexo'],
+            $query->bind_param('sssssssi', $datos['tipoDocumento'],
+                                           $datos['numeroDocumento'],
+                                           $datos['apellidos'],
+                                           $datos['nombres'],
                                            $datos['telefono'],
                                            $datos['correo'],
+                                           $datos['oficina'],
                                            $idPersona);
             $respuesta = $query->execute();
             $query->close();

@@ -14,11 +14,7 @@
             <div class="row">
                     <div class="col-sm-4">
                         <label for="tipo_documento">Tipo de documento</label>
-                        <select name="tipo_documento" id="tipo_documento" class="form-control" required>
-                      <option value="">Seleccione una Opcion</input>   
-                      <option value="1">Cedula de Ciudadania</input>
-                      <option value="2">Pasaporte</option>
-                </select>
+                        <input type="text" class="form-control" id="tipo_documento" name="tipo_documento" required>
                     </div>
                     <div class="col-sm-4">
                         <label for="numero_documento">Numero de documento</label>

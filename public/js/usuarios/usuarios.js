@@ -31,16 +31,16 @@ function obtenerDatosUsuario(idUsuario){
             success : function(respuesta){
                 respuesta = jQuery.parseJSON(respuesta);
                 $('#idUsuario').val(respuesta['idUsuario']);
-                $('#paternou').val(respuesta['paterno']);
-                $('#maternou').val(respuesta['materno']);
-                $('#nombreu').val(respuesta['nombrePersona']);
-                $('#fechaNacimientou').val(respuesta['fechaNacimiento']);
-                $('#sexou').val(respuesta['sexo']);
+                $('#tipoDocumentou').val(respuesta['tipoDocumento']);
+                $('#numeroDocumentou').val(respuesta['numeroDocumento']);
+                $('#apellidosu').val(respuesta['apellidos']);
+                $('#nombresu').val(respuesta['nombres']);
+                $('#oficinau').val(respuesta['oficina']);
                 $('#telefonou').val(respuesta['telefono']);
                 $('#correou').val(respuesta['correo']);
                 $('#usuariou').val(respuesta['nombreUsuario']);
                 $('#idRolu').val(respuesta['idRol']);
-                $('#ubicacionu').val(respuesta['ubicacion']);
+                $('#areau').val(respuesta['area']);
                 
  
             }
