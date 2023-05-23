@@ -11,21 +11,21 @@
             $sql = "UPDATE
                         t_persona
                     SET
-                        paterno = ?,
-                        materno = ?,
-                        nombre = ?,
+                        tipoDocumento = ?,
+                        numeroDocumento = ?,
+                        apellidos = ?,
+                        nombres = ?,
                         telefono = ?,
                         correo = ?,
-                        fecha_nacimiento = ?
                     WHERE
                         id_persona = ?";
             $query = $conexion->prepare($sql);
-            $query->bind_param("ssssssi",$datos['paterno'],
-                                         $datos['materno'],
-                                         $datos['nombre'],
+            $query->bind_param("sssssss",$datos['tipoDocumento'],
+                                         $datos['numeroDocumento'],
+                                         $datos['apellidos'],
+                                         $datos['nombres'],
                                          $datos['telefono'],
                                          $datos['correo'],
-                                         $datos['fecha'],
                                          $idPersona);
             $respuesta = $query->execute();
             $query->close();

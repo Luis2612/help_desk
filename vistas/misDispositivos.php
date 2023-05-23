@@ -19,12 +19,9 @@
         
             $sql ="SELECT
             persona.id_persona AS idPersona,
-            CONCAT(
-                persona.paterno,
+            CONCAT( persona.apellidos,
                 ' ',
-                persona.materno,
-                ' ',
-                persona.nombre
+                persona.nombres
             ) AS nombrePersona,
             equipo.id_equipo AS idEquipo,
             equipo.nombre AS nombreEquipo,

@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="../public/datatable/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../public/fontawesome/css/all.css">
     <link rel="stylesheet" href="../public/datatable/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="../">
     <title>Help-Desk </title>
 </head>
 
+<body>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
         <div class="container">
@@ -34,7 +34,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="inicio.php">
-                        <span class="fas fa-home"></span>Inicio
+                            <span class="fas fa-home"></span>Inicio
                         </a>
                     </li>
                     <?php if($_SESSION['usuario']['rol'] == 1){?>
@@ -57,32 +57,31 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="asignacion.php">
-                           <span class="fas fa-address-book"></span> Asignacion de equipos
+                            <span class="fas fa-address-book"></span> Asignacion de equipos
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="reportes.php">
-                           <span class="fas fa-file-alt"></span> Reportes
+                            <span class="fas fa-file-alt"></span> Reportes
                         </a>
                     </li>
                     <?php }?>
                     <li class="nav-item dropdown">
                         <a style="color:red" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
-                          <span class="fas fa-user-ninja"></span> Usuario: <?php echo $_SESSION['usuario']['nombre'];?>
+                            <span class="fas fa-user-ninja"></span> Usuario: <?php echo $_SESSION['usuario']['nombre'];?>
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#"
                             data-toggle="modal" 
                             data-target="#modalActualizarDatosPersonales" onclick="obtenerDatosPersonalesInicio('<?php echo $_SESSION['usuario']['id']; ?>')">
-                           <span class="fas fa-user-edit"></span> Editar datos</a>
+                            <span class="fas fa-user-edit"></span> Editar datos</a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../procesos/usuarios/login/salir.php">
                                 <span class="fas fa-sign-out-alt"></span> Salir
                             </a>
                             
-                
                         </div>
                     </li>
                 </ul>
@@ -90,6 +89,9 @@
         </div>
     </nav>
 
+
+                        
+                    </body>
 
     <?php 
         include "inicio/modalActualizarDatosPersonales.php";

@@ -10,18 +10,18 @@
         </button>
       </div>
       <div class="modal-body ">
-        <label for="paternoinicio">Primer Apellido</label>
-        <input type="text" class="form-control" id="paternoinicio" name="paternoinicio">
-        <label for="maternoinicio">Segundo Apellido</label>
-        <input type="text" class="form-control" id="maternoinicio" name="maternoinicio">
-        <label for="nombreinicio">Nombre</label>
-        <input type="text" class="form-control" id="nombreinicio" name="nombreinicio">
+        <label for="tipoDocumento">Tipo de documento</label>
+        <input type="text" class="form-control" id="tipoDocumento" name="tipoDocumento">
+        <label for="numeroDocumento">Numero de documentos</label>
+        <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" class="form-control" id="apellidos" name="apellidos">
+        <label for="nombres">nombres</label>
+        <input type="text" class="form-control" id="nombres" name="nombres">
         <label for="telefonoinicio">Telefono</label>
         <input type="text" class="form-control" id="telefonoinicio" name="telefonoinicio">
         <label for="correoinicio">correo</label>
         <input type="text" class="form-control" id="correoinicio" name="correoinicio">
-        <label for="fechainicio">fecha de nacimiento</label>
-        <input type="date" class="form-control" id="fechainicio" name="fechainicio">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

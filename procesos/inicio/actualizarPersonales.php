@@ -5,8 +5,8 @@
         include "../../clases/Inicio.php";
 
     $datos = array(
-        'tipoDocumento'=> $_POST['tipoDocumentoinicio'],
-        'numeroDocumento'=> $_POST['numeroDocumentoinicio'],
+        'tipo_documento'=> $_POST['tipoDocumentoinicio'],
+        'numero_documento'=> $_POST['numeroDocumentoinicio'],
         'nombres'=> $_POST['nombresinicio'],
         'telefono'=> $_POST['telefonoinicio'],
         'correo'=> $_POST['correoinicio'],
