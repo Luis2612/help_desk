@@ -15,7 +15,12 @@
             <div class="row">
                     <div class="col-sm-4">
                         <label for="tipoDocumentou">Tipo de documento</label>
-                        <input type="text" class="form-control" id="tipoDocumentou" name="tipoDocumentou" required>
+                        <select class="form-control" id="tipoDocumentou" name="tipoDocumentou" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="Cedula de ciudadania">Cédula de ciudadanía</option>
+                        <option value="Cedula Extranjeria">Cédula de extranjería</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                      </select>
                     </div>
                     <div class="col-sm-4">
                         <label for="numeroDocumentou">Numero de documento</label>
@@ -62,7 +67,17 @@
       <div class="row">
             <div class="col-sm-12">
             <label for="areau">Area</label>
-            <textarea name="areau" id="areau" class="form-control"></textarea>
+            <select name="areau" id="areau" class="form-control">
+                <option value="">Seleccione un área</option>
+                <option value="1">Dep. Sistemas</option>
+                <option value="2">Dep. Jurídico</option>
+                <option value="3">Cartera</option>
+                <option value="4">Análisis</option>
+                <option value="5">Gestión Humana</option>
+                <option value="6">Presidencia</option>
+                <option value="7">Global Finanzas</option>
+                <option value="8">Finanzas Centro</option>
+              </select>
             </div>
       </div>
       <div class="modal-footer">

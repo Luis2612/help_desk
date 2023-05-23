@@ -23,12 +23,15 @@ function obtenerDatosPersonalesInicio(idUsuario){
         url:"../procesos/usuarios/crud/obtenerDatosUsuario.php",
         success:function (respuesta) {
             respuesta = jQuery.parseJSON(respuesta);
-            $('#tipoDocumentoinicio').val(respuesta['tipoDocumennto']);
+            $('#tipoDocumentoinicio').val(respuesta['tipoDocumento']);
             $('#numeroDocumentoinicio').val(respuesta['numeroDocumento']);
-            $('#nombresinicio').val(respuesta['nombrePersona']);
+            $('#apellidos').text(respuesta['apellidos']);
+            $('#nombresinicio').val(respuesta['nombres']);
             $('#telefonoinicio').val(respuesta['telefono']);
             $('#correoinicio').val(respuesta['correo']);
-            $('#fechainicio').val(respuesta['fechaNacimiento']);
+            $('#areainicio').val(respuesta['area']);
+            $('#oficina').val(respuesta['oficina']);
+
         }
     })
 }

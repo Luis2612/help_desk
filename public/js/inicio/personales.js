@@ -7,10 +7,12 @@ function datosPersonalesInicio (idUsuario){
             respuesta = jQuery.parseJSON(respuesta);
             $('#tipoDocumento').text(respuesta['tipoDocumento']);
             $('#numeroDocumento').text(respuesta['numeroDocumento']);
-            $('#nombres').text(respuesta['nombrePersona']);
+            $('#apellidos').text(respuesta['apellidos']);
+            $('#nombres').text(respuesta['nombres']);
             $('#telefono').text(respuesta['telefono']);
             $('#correo').text(respuesta['correo']);
-            $('#edad').text(respuesta['fechaNacimiento']);
+            $('#area').text(respuesta['area']);
+            $('#oficina').text(respuesta['oficina']);
         }
     })
 }
