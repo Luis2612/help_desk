@@ -18,22 +18,19 @@
                     <?php
                             $sql = "SELECT 
                                         persona.id_persona, 
-                                        CONCAT(persona.paterno,
-                                            ' ', 
-                                            persona.materno, 
-                                            ' ', persona.nombre) AS nombre
+                                        CONCAT(persona.nombres) AS nombres
                                     FROM 
                                         t_persona as persona 
                                             INNER JOIN 
                                         t_usuarios as usuario on persona.id_persona = usuario.id_persona
                                         and usuario.id_rol = 1 
-                                        ORDER BY persona.paterno";
+                                        ORDER BY persona.nombres";
                             $respuesta = mysqli_query($conexion, $sql);            
                     ?>
                     <select name="idPersona" id="idPersona" class="form-control" required>                    
                     <option value="">Seleccione una opcion</option>
                     <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                    <option value="<?php echo $mostrar['id_persona']; ?>"> <?php echo $mostrar['nombre'];?> </option>
+                    <option value="<?php echo $mostrar['id_persona']; ?>"> <?php echo $mostrar['nombres'];?> </option>
                     <?php } ?>
                     </select>
                 </div>
@@ -62,10 +59,6 @@
                     <label for="modelo">Modelo</label>
                     <input type="text" name="modelo" id="modelo" class="form-control">
                 </div>
-                <div class="col-sm-4">
-                    <label for="color">Color</label>
-                    <input type="text" name="color" id="color" class="form-control">
-                </div>
             </div>
 
             <div class="row">
@@ -76,7 +69,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    <label for="memoria">Memoria</label>
+                    <label for="memoria">Memoria RAM</label>
                     <input type="text" class="form-control" id="memoria" name="memoria">
                 </div>
                 <div class="col-sm-4">

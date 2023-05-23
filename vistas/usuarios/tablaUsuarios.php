@@ -29,7 +29,7 @@ $respuesta = mysqli_query($conexion, $sql);
 <table class="table table-sm dt-responsive nowrap" id="tablaUsuariosDataTable" style="width:100%">
     <thead>
             <th>Tipo documento</th>
-            <th>Numero de docuemnto</th>
+            <th>Numero de documento</th>
             <th>Apellidos</th>
             <th>Nombres</th>
             <th>Telefono</th>

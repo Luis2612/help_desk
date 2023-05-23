@@ -4,17 +4,12 @@ $con = new Conexion();
 $conexion = $con->conectar();
 $sql = "SELECT
             persona.id_persona as idPersona,
-            CONCAT(persona.paterno,
-                ' ',
-                persona.materno,
-                ' ',
-                persona.nombre) as nombrePersona,
+            CONCAT(persona.nombres) as nombrePersona,
             equipo.id_equipo AS idEquipo,
             equipo.nombre AS nombreEquipo,
             asignacion.id_asignacion AS idAsignacion,
             asignacion.marca  AS marca,
             asignacion.modelo AS modelo,
-            asignacion.color AS color,
             asignacion.descripcion AS descripcion,
             asignacion.memoria AS memoria,
             asignacion.disco_duro AS discoDuro,
@@ -37,7 +32,6 @@ $respuesta = mysqli_query($conexion, $sql);
         <th>Equipo</th>
         <th>Marca</th>
         <th>Modelo</th>
-        <th>Color</th>
         <th>Descripcion</th>
         <th>Memoria</th>
         <th>Disco Duro</th>
@@ -52,7 +46,6 @@ $respuesta = mysqli_query($conexion, $sql);
             <td><?php echo $mostrar['nombreEquipo']?></td>
             <td><?php echo $mostrar['marca']?></td>
             <td><?php echo $mostrar['modelo']?></td>
-            <td><?php echo $mostrar['color']?></td>
             <td><?php echo $mostrar['descripcion']?></td>
             <td><?php echo $mostrar['memoria']?></td>
             <td><?php echo $mostrar['discoDuro']?></td>

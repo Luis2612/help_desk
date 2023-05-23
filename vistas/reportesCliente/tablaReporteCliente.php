@@ -9,11 +9,9 @@
                 reporte.id_reporte AS idReporte,
                 reporte.id_usuario AS idUsuario,
                 CONCAT(
-                    persona.paterno,
+                    persona.apellidos,
                     ' ',
-                    persona.materno,
-                    ' ',
-                    persona.nombre
+                    persona.nombres
                 ) AS nombrePersona,
                 equipo.id_equipo AS idEquipo,
                 equipo.nombre AS nombreEquipo,

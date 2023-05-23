@@ -23,9 +23,9 @@ function obtenerDatosPersonalesInicio(idUsuario){
         url:"../procesos/usuarios/crud/obtenerDatosUsuario.php",
         success:function (respuesta) {
             respuesta = jQuery.parseJSON(respuesta);
-            $('#paternoinicio').val(respuesta['paterno']);
-            $('#maternoinicio').val(respuesta['materno']);
-            $('#nombreinicio').val(respuesta['nombrePersona']);
+            $('#tipoDocumentonoinicio').val(respuesta['tipoDocumennto']);
+            $('#numeroDocumentoinicio').val(respuesta['numeroDocumento']);
+            $('#nombresinicio').val(respuesta['nombrePersona']);
             $('#telefonoinicio').val(respuesta['telefono']);
             $('#correoinicio').val(respuesta['correo']);
             $('#fechainicio').val(respuesta['fechaNacimiento']);

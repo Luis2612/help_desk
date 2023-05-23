@@ -5,9 +5,9 @@
         include "../../clases/Inicio.php";
 
     $datos = array(
-        'paterno'=> $_POST['paternoinicio'],
-        'materno'=> $_POST['maternoinicio'],
-        'nombre'=> $_POST['nombreinicio'],
+        'tipoDocumento'=> $_POST['tipoDocumentoinicio'],
+        'numeroDocumento'=> $_POST['numeroDocumentoinicio'],
+        'nombres'=> $_POST['nombresinicio'],
         'telefono'=> $_POST['telefonoinicio'],
         'correo'=> $_POST['correoinicio'],
         'fecha'=> $_POST['fechainicio'],

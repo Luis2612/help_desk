@@ -4,7 +4,6 @@
             'idEquipo' =>   $_POST['idEquipo'],
             'marca' =>  $_POST['marca'] ,
             'modelo' => $_POST['modelo'],
-            'color' => $_POST['color'] ,
             'descripcion' => $_POST['descripcion'], 
             'memoria' => $_POST['memoria'],
             'discoDuro' => $_POST['discoDuro'], 
