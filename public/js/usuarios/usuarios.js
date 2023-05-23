@@ -109,20 +109,33 @@ function cambiarEstatusUsuario(idUsuario, estatus){
 
     });
 }
-function eliminarUsuario(){
-    $.ajax({
-        type:"POST",
-        data:$('#frmEliminarUsuario').serialize(),
-        url:"../procesos/usuarios/crud/eliminarUsuario.php",
-        success:function(respuesta) {
-            respuesta = respuesta.trim();
-            if (respuesta == 1) {
-                $('#tablaUsuarioLoad').load("usuarios/tablaUsuarios.php");
-              Swal.fire(":D" , "Usuario eliminado con extito!" , "warning");    
-          } else {
-                  Swal.fire(":c","Error al eliminar el usuario" + respuesta, "error");
-          }
-
+function eliminarUsuario(idUsuario, idPersona){
+    Swal.fire({
+        title: 'Estas seguro de eliminar este usuario?',
+        text: "Una vez eliminado no podra ser recuperado!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'SI, Seguro!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type:"POST",
+                data: "idUsuario=" + idUsuario + "&idPersona=" + idPersona,
+                url:"../procesos/usuarios/crud/eliminarUsuario.php",
+                success:function(respuesta) {
+                    respuesta = respuesta.trim();
+                    if (respuesta == 1) {
+                        $('#tablaUsuarioLoad').load("usuarios/tablaUsuarios.php");
+                      Swal.fire(":D" , "Usuario eliminado con extito!" , "warning");    
+                  } else {
+                          Swal.fire(":c","Error al eliminar el usuario" + respuesta, "error");
+                  }
+        
+                }
+            });
         }
-    });
-}
+        })
+        return false;
+    }

@@ -13,40 +13,40 @@
       <div class="modal-body">
             <div class="row">
                     <div class="col-sm-4">
-                        <label for="paterno">Primer Apellido</label>
-                        <input type="text" class="form-control" id="paterno" name="paterno" required>
+                        <label for="tipo_documento">Tipo de documento</label>
+                        <select name="tipo_documento" id="tipo_documento" class="form-control" required>
+                      <option value="">Seleccione una Opcion</input>   
+                      <option value="1">Cedula de Ciudadania</input>
+                      <option value="2">Pasaporte</option>
+                </select>
                     </div>
                     <div class="col-sm-4">
-                        <label for="materno">Segundo Apellido</label>
-                        <input type="text" class="form-control" id="materno" name="materno" required>
+                        <label for="numero_documento">Numero de documento</label>
+                        <input type="text" class="form-control" id="numero_documento" name="numero_documento" required>
                     </div>
                     <div class="col-sm-4">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" required>
                     </div>
             </div>
             <div class="row">
                     <div class="col-sm-4">
-                        <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
+                        <label for="nombres">Nombres</label>
+                        <input type="text" class="form-control" id="nombres" name="nombres">
                     </div>
                     <div class="col-sm-4">
-                        <label for="sexo">Sexo</label>
-                        <select class="form-control" id="sexo" name="sexo">
-                            <option value=""></option>
-                            <option value="F">Femenino</option>
-                            <option value="M">Masculino</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="telefono">Telefono: </label>
+                        <label for="telefono">telefono</label>
                         <input type="text" class="form-control" id="telefono" name="telefono">
                     </div>
-            </div>
-            <div class="row">
                     <div class="col-sm-4">
                         <label for="correo">Correo</label>
                         <input type="mail" class="form-control" id="correo" name="correo">
+                    </div>
+            </div>
+            <div class="row">
+                        <div class="col-sm-4">
+                        <label for="oficina">Oficina</label>
+                        <input type="text" class="form-control" id="oficina" name="oficina">
                     </div>
                     <div class="col-sm-4">
                         <label for="usuario">Usuario</label>
@@ -60,8 +60,8 @@
             <div class="row">
                 <div class="col-sm-12">
                 <label for="idRol">Rol de usuario</label>
-                <select name="idRol" id="idRol" class="form-control">
-                    <option value="1">Cliente</input>   
+                <select name="idRol" id="idRol" class="form-control" required>
+                    <option value="">Seleccione una Opcion</input>   
                     <option value="1">Cliente</input>
                     <option value="2">Administrador</option>
                 </select>
@@ -69,8 +69,8 @@
       </div>
       <div class="row">
             <div class="col-sm-12">
-            <label for="ubicacion">Ubciacion</label>
-            <textarea name="ubicacion" id="ubicacion" class="form-control"></textarea>
+            <label for="area">Area</label>
+            <textarea name="area" id="area" class="form-control"></textarea>
             </div>
       </div>
       <div class="modal-footer">

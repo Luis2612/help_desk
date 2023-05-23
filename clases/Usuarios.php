@@ -31,14 +31,14 @@
                                                     id_persona, 
                                                     usuario, 
                                                     password, 
-                                                    ubicacion)
+                                                    area)
                             VAlUES(?, ?, ?, ? ,?)";
                     $query = $conexion->prepare($sql);
                     $query->bind_param("iisss", $datos['idRol'],
                                                 $idPersona,
                                                 $datos['usuario'],
                                                 $datos['password'],
-                                                $datos['ubicacion']);
+                                                $datos['area']);
 
                     $respuesta = $query->execute();
                     return $respuesta;                           
@@ -51,22 +51,22 @@
 
         public function agregarPersona($datos){
             $conexion = Conexion::conectar();
-            $sql = "INSERT INTO t_persona (paterno,
-                                           materno,
-                                           nombre,
-                                           fecha_nacimiento,
-                                           sexo,
+            $sql = "INSERT INTO t_persona (tipo_documento,
+                                           numero_documento,
+                                           apellidos,
+                                           nombres,                                       
                                            telefono,
-                                           correo)
-                    VALUES (?, ?, ?, ?, ?, ?,  ?)";
+                                           correo,
+                                           oficina)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
-            $query->bind_param("sssssss",$datos['paterno'],
-                                          $datos['materno'],
-                                          $datos['nombre'],
-                                          $datos['fechaNacimiento'],
-                                          $datos['sexo'],
+            $query->bind_param("sssssss",$datos['tipo_documento'],
+                                          $datos['numero_documento'],
+                                          $datos['apellidos'],
+                                          $datos['nombres'],
                                           $datos['telefono'],
-                                          $datos['correo']);
+                                          $datos['correo'],
+                                          $datos['oficina']);
 
             $respuesta = $query->execute();
             $idPersona = mysqli_insert_id($conexion);
@@ -81,14 +81,14 @@
             usuarios.usuario AS nombreUsuario,
             roles.nombre AS rol,
             usuarios.id_rol AS idRol,
-            usuarios.ubicacion As ubicacion,
+            usuarios.area As area,
             usuarios.activo AS estatus,
             usuarios.id_persona AS idPersona,
-            persona.nombre AS nombrePersona,
-            persona.paterno AS paterno,
-            persona.materno AS materno,
-            persona.fecha_nacimiento AS fechaNacimiento,
-            persona.sexo AS sexo,
+            persona.oficina AS oficina,
+            persona.tipo_documento AS tipoDocumento,
+            persona.numero_documento AS numeroDocumento,
+            persona.apellidos AS apellidos,
+            persona.nombres AS nombres,
             persona.correo AS correo,
             persona.telefono as telefono
          FROM
@@ -106,14 +106,14 @@
                 'nombreUsuario' => $usuario['nombreUsuario'],
                 'rol' => $usuario['rol'],
                 'idRol' => $usuario['idRol'],
-                'ubicacion' => $usuario['ubicacion'],
+                'ubicacion' => $usuario['area'],
                 'estatus' => $usuario['estatus'],
                 'idPersona' => $usuario['idPersona'],
-                'nombrePersona' => $usuario['nombrePersona'],
-                'paterno' => $usuario['paterno'],
-                'materno' => $usuario['materno'],
-                'fechaNacimiento' => $usuario['fechaNacimiento'],
-                'sexo' => $usuario['sexo'],
+                'oficina' => $usuario['oficina'],
+                'tipoDocumento' => $usuario['tipoDocumento'],
+                'numeroDocumento' => $usuario['numeroDocumento'],
+                'apeliidos' => $usuario['apellidos'],
+                'nombres' => $usuario['nombres'],
                 'correo' => $usuario['correo'],
                 'telefono' => $usuario['telefono']
 
@@ -129,12 +129,12 @@
             if ($exitoPersona) {    
                 $sql = "UPDATE t_usuarios SET id_rol = ?,
                                               usuario = ?,
-                                              ubicacion = ? 
+                                              area = ? 
                         Where id_usuario = ?";   
                 $query = $conexion->prepare($sql);
                 $query->bind_param('issi', $datos['idRol'],
                                             $datos['usuario'],
-                                            $datos['ubicacion'],
+                                            $datos['area'],
                                             $datos['idUsuario']); 
                 $respuesta = $query->execute();
                 $query->close();
@@ -216,11 +216,46 @@
             $respuesta = $query->execute();
             $query->close();
             return $respuesta;
-            
         }
-        public function eliminarUsuario($datos) {
-            $conexion = Conexion::conectar();
-            
+            public function buscarReportesUsuario($idUsuario) {
+                $conexion = Conexion::conectar();
+    
+                $sql = "SELECT * FROM t_reportes WHERE id_usuario = '$idUsuario'";
+                $respuesta = mysqli_query($conexion,$sql);
+    
+                if(mysqli_num_rows($respuesta) > 0){
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+            public function buscarAsignacionPersona ($idPersona) {
+                $conexion = Conexion::conectar();
+                $sql = "SELECT * FROM t_asignacion WHERE id_persona = '$idPersona'";
+                $respuesta = mysqli_query($conexion,$sql);
+                if(mysqli_num_rows($respuesta) > 0){
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+            public function eliminarUsuario($datos) {
+                $conexion = Conexion::conectar();
+                $reportes = self::buscarReportesUsuario($datos['idUsuario']);
+                $asignaciones = self::buscarAsignacionPersona($datos['idPersona']);
+    
+                    if($reportes == 0 && $asignaciones == 0) {
+                        //eliminamos un usuario
+                        $sql = "DELETE FROM t_usuarios WHERE id_usuario = ?";
+                        $query = $conexion->prepare($sql);
+                        $query->bind_param('i', $datos['idUsuario']);
+                        $respuesta = $query->execute();
+                        $query->close();
+                        return $respuesta;
+                    } else {
+                        return 0;
+                    }
+            }
         }
-    }
+    
          

@@ -7,14 +7,14 @@
 	usuarios.usuario AS nombreUsuario,
 	roles.nombre AS rol,
     usuarios.id_rol AS idRol,
-	usuarios.ubicacion As ubicacion,
+	usuarios.area As area,
     usuarios.activo AS estatus,
     usuarios.id_persona AS idPersona,
-    persona.nombre AS nombrePersona,
-    persona.paterno AS paterno,
-    persona.materno AS materno,
-    persona.fecha_nacimiento AS fechaNacimiento,
-    persona.sexo AS sexo,
+    persona.tipo_documento AS tipoDocumento,
+    persona.numero_documento AS numeroDocumento,
+    persona.apellidos AS apellidos,
+    persona.nombres AS nombres,
+    persona.oficina AS oficina,
     persona.correo AS correo,
     persona.telefono as telefono
  FROM
@@ -28,15 +28,15 @@ $respuesta = mysqli_query($conexion, $sql);
 
 <table class="table table-sm dt-responsive nowrap" id="tablaUsuariosDataTable" style="width:100%">
     <thead>
-            <th>Primer Apellido</th>
-            <th>Segundo Apellido</th>
-            <th>Nombre</th>
-            <th>Edad</th>
+            <th>Tipo documento</th>
+            <th>Numero de docuemnto</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
             <th>Telefono</th>
             <th>Correo</th>
             <th>Usuario</th>
-            <th>Ubicacion</th>
-            <th>Sexo</th>
+            <th>Area</th>
+            <th>oficina</th>
             <th>Reset Password</th>
             <th>Activar</th>
             <th>Editar</th>
@@ -48,15 +48,15 @@ $respuesta = mysqli_query($conexion, $sql);
                 while ($mostrar = mysqli_fetch_array($respuesta)) {
             ?>
             <tr>
-                <td><?php echo $mostrar['paterno']; ?></td>
-                <td><?php echo $mostrar['materno']; ?></td>
-                <td><?php echo $mostrar['nombrePersona']; ?></td>
-                <td><?php echo $mostrar['fechaNacimiento']; ?></td>
+                <td><?php echo $mostrar['tipoDocumento']; ?></td>
+                <td><?php echo $mostrar['numeroDocumento']; ?></td>
+                <td><?php echo $mostrar['apellidos']; ?></td>
+                <td><?php echo $mostrar['nombres']; ?></td>
                 <td><?php echo $mostrar['telefono']; ?></td>
                 <td><?php echo $mostrar['correo']; ?></td>
                 <td><?php echo $mostrar['nombreUsuario']; ?></td>
-                <td><?php echo $mostrar['ubicacion']; ?></td>
-                <td><?php echo $mostrar['sexo']; ?></td>
+                <td><?php echo $mostrar['area']; ?></td>
+                <td><?php echo $mostrar['oficina']; ?></td>
                 <td>
                 <button class="btn btn-info btn-sm" 
                         data-toggle="modal" 
@@ -93,13 +93,10 @@ $respuesta = mysqli_query($conexion, $sql);
                 </button>
                 </td>
                 <td>
-                    <form id="frmEliminarUsuario" method="POST" onsubmit="return eliminarUsuario()">
-                        <input type="text" id="idUsuarioEliminar" hidden values="<?php echo $mostrar ['idUsuario']?>)?>">
-                        <input type="text" id="idPersonaEliminar" hidden values="<?php echo $mostrar ['idPersona']?>)?>">
-                        <button class="btn btn-danger btn-sm">
+                <button class="btn btn-danger btn-sm" 
+                        onclick="eliminarUsuario(<?php echo $mostrar ['idUsuario']; ?>, <?php echo $mostrar ['idPersona']; ?>)">
                             <span class="fas fa-user-times"></span>
                         </button>
-                    </form>
                 </td>
             </tr>
             <?php } ?>
