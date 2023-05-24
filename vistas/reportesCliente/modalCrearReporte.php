@@ -1,4 +1,5 @@
 
+
 <form method="POST" id="frmNuevoReporte" onsubmit="return agregarNuevoReporte()">
 <!-- Modal -->
 <div class="modal fade" id="modalCrearReporte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
