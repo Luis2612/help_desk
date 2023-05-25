@@ -4,10 +4,8 @@
             'idEquipo' =>   $_POST['idEquipo'],
             'marca' =>  $_POST['marca'] ,
             'modelo' => $_POST['modelo'],
-            'descripcion' => $_POST['descripcion'], 
-            'memoria' => $_POST['memoria'],
-            'discoDuro' => $_POST['discoDuro'], 
-            'procesador' => $_POST['procesador']
+            'serial' => $_POST['serial'],
+            'numeroAsignacion' => $_POST['numeroAsignacion'] 
         );
 
     include "../../clases/Asignacion.php";

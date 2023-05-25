@@ -11,8 +11,8 @@
             $sql = "UPDATE
                         t_persona
                     SET
-                        tipoDocumento = ?,
-                        numeroDocumento = ?,
+                        tipo_documento = ?,
+                        numero_documento = ?,
                         apellidos = ?,
                         nombres = ?,
                         telefono = ?,

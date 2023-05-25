@@ -5,13 +5,13 @@ function datosPersonalesInicio (idUsuario){
         url:"../procesos/usuarios/crud/obtenerDatosUsuario.php",
         success:function (respuesta) {
             respuesta = jQuery.parseJSON(respuesta);
-            $('#tipoDocumento').text(respuesta['tipoDocumento']);
-            $('#numeroDocumento').text(respuesta['numeroDocumento']);
-            $('#apellidos').text(respuesta['apellidos']);
-            $('#nombres').text(respuesta['nombres']);
+            $('#tipo_documento').text(respuesta['tipoDocumento']);
+            $('#numero_documento').text(respuesta['numeroDocumento']);
+            $('#apellidosa').text(respuesta['apellidos']);
+            $('#nombresa').text(respuesta['nombres']);
             $('#telefono').text(respuesta['telefono']);
             $('#correo').text(respuesta['correo']);
-            $('#area').text(respuesta['area']);
+            $('#areaa').text(respuesta['area']);
             $('#oficina').text(respuesta['oficina']);
         }
     })

@@ -16,7 +16,6 @@
                     AND usuario.id_usuario = '$idUsuario'";
         $respuesta = mysqli_query($conexion,$sql);
         $idPersona = mysqli_fetch_array($respuesta)[0];            
-        
             $sql ="SELECT
             persona.id_persona AS idPersona,
             CONCAT( persona.apellidos,
@@ -28,11 +27,8 @@
             asignacion.id_asignacion AS idAsignacion,
             asignacion.marca AS marca,
             asignacion.modelo AS modelo,
-            asignacion.color AS color,
-            asignacion.descripcion AS descripcion,
-            asignacion.memoria AS memoria,
-            asignacion.disco_duro AS discoDuro,
-            asignacion.procesador AS procesador,
+            asignacion.numero_asignacion AS numeroAsignacion,
+            asignacion.serial AS serial,
             equipo.descripcion as imagen
         FROM
             t_asignacion AS asignacion
@@ -45,8 +41,6 @@
             asignacion.id_persona = '$idPersona '";
     $respuesta = mysqli_query($conexion,$sql);
 ?>
-
-   
     <div class="container">
         <div class="card border-0 shadow my-5">
             <div class="card-body p-5">
@@ -60,16 +54,10 @@
                             <div class="card-body">
                             <h4> <span class="<?php echo $mostrar['imagen'];?>"></span>
                             <?php echo $mostrar['nombreEquipo']; ?></h4>
-                                <p>
-                                    <?php echo $mostrar ['descripcion'];?>
-                                </p>
-                                <ul>
+                                <ul><li>numero Asignacion: <?php echo $mostrar['numeroAsignacion'];?></li>
+                                    <li>serial: <?php echo $mostrar['serial'];?></li>
                                     <li>Marca: <?php echo $mostrar['marca'];?></li>
-                                    <li>Modelo: <?php echo $mostrar['modelo'];?></li>
-                                    <li>Color: <?php echo $mostrar['color'];?></li>
-                                    <li>Memoria: <?php echo $mostrar['memoria'];?></li>
-                                    <li>Disco Duro: <?php echo $mostrar['discoDuro'];?></li>
-                                    <li>Procesador: <?php echo $mostrar['procesador'];?></li>
+                                    <li>Modelo: <?php echo $mostrar['modelo'];?></li> 
                                 </ul>
                             </div>
                         </div>

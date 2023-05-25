@@ -51,6 +51,10 @@
             </div>
 
             <div class="row">
+            <div class="col-sm-4">
+                    <label for="numeroAsignacion">Numero del equipo</label>
+                    <input type="text" class="form-control" id="numeroAsignacion" name="numeroAsignacion">
+                </div>
                 <div class="col-sm-4">
                     <label for="marca">Marca</label>
                     <input type="text" name="marca" id="marca" class="form-control">
@@ -60,28 +64,11 @@
                     <input type="text" name="modelo" id="modelo" class="form-control">
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <label for="descripcion">Descripcion</label>
-                    <textarea name="descripcion" id="descripcion" class="form-control"></textarea>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-sm-4">
-                    <label for="memoria">Memoria RAM</label>
-                    <input type="text" class="form-control" id="memoria" name="memoria">
-                </div>
-                <div class="col-sm-4">
-                    <label for="discoDuro">Disco Duro</label>
-                    <input type="text" class="form-control" id="discoDuro" name="discoDuro">
-                </div>
-                <div class="col-sm-4">
-                    <label for="procesador">Procesador</label>
-                    <input type="text" class="form-control" id="procesador" name="procesador">
-                </div>
-            </div>
-            
+                    <label for="serial">numero serial</label>
+                    <input type="text" class="form-control" id="serial" name="serial">
+                </div>            
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

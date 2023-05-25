@@ -10,10 +10,8 @@ $sql = "SELECT
             asignacion.id_asignacion AS idAsignacion,
             asignacion.marca  AS marca,
             asignacion.modelo AS modelo,
-            asignacion.descripcion AS descripcion,
-            asignacion.memoria AS memoria,
-            asignacion.disco_duro AS discoDuro,
-            asignacion.procesador AS procesador
+            asignacion.numero_asignacion AS numeroAsignacion,
+            asignacion.serial AS serial
             FROM
             t_asignacion AS asignacion
             INNER JOIN t_persona AS persona
@@ -30,12 +28,10 @@ $respuesta = mysqli_query($conexion, $sql);
     <thead>
         <th>Persona</th>
         <th>Equipo</th>
+        <th>Numero Asignacion</th>
+        <th>serial</th>
         <th>Marca</th>
         <th>Modelo</th>
-        <th>Descripcion</th>
-        <th>Memoria</th>
-        <th>Disco Duro</th>
-        <th>Procesador</th>
         <th>Eliminar</th>
     </thead>
     <tbody>
@@ -44,12 +40,11 @@ $respuesta = mysqli_query($conexion, $sql);
         <tr>
             <td><?php echo $mostrar['nombrePersona']?></td>
             <td><?php echo $mostrar['nombreEquipo']?></td>
+            <td><?php echo $mostrar['numeroAsignacion']?></td>
+            <td><?php echo $mostrar['serial']?></td>
             <td><?php echo $mostrar['marca']?></td>
             <td><?php echo $mostrar['modelo']?></td>
-            <td><?php echo $mostrar['descripcion']?></td>
-            <td><?php echo $mostrar['memoria']?></td>
-            <td><?php echo $mostrar['discoDuro']?></td>
-            <td><?php echo $mostrar['procesador']?></td>
+
             <td>
                 <button class="btn btn-danger btn-sm" 
                 onclick="eliminarAsigancion (<?php echo $mostrar ['idAsignacion']?>)">

@@ -8,23 +8,17 @@
             $sql = "INSERT INTO t_asignacion (id_persona,
                                  id_equipo,
                                  marca,
-                                 modelo,
-                                 color,
-                                 descripcion,
-                                 memoria,
-                                 disco_duro,
-                                 procesador)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                 modelo,                                 
+                                 numero_asignacion,
+                                 serial)
+                    VALUES (?, ?, ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
-            $query->bind_param('iisssssss',  $datos['idPersona'],
+            $query->bind_param('iissss',  $datos['idPersona'],
                                              $datos['idEquipo'],
                                              $datos['marca'],
                                              $datos['modelo'],
-                                             $datos['color'],
-                                             $datos['descripcion'],
-                                             $datos['memoria'],
-                                             $datos['discoDuro'],
-                                             $datos['procesador']);
+                                             $datos['numeroAsignacion'],
+                                             $datos['serial']);
             $respuesta = $query->execute();
             $query->close();
             return $respuesta;

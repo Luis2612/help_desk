@@ -14,15 +14,15 @@
                     <h1 class="fw-light">BIENVENIDO <?php echo $_SESSION['usuario']['nombre'];?></h1>
                     <p class="lead">
                         <div class="row">
-                            <div class="col-sm-4">Tipo de documento: <span id="tipoDocumento"></span></div>
-                            <div class="col-sm-4">Numero de documento: <span id="NumeroDocumento"></span></div>
-                            <div class="col-sm-4">Apellidos: <span id="apellidos"></span></div>
-                            <div class="col-sm-4">Nombres: <span id="nombres"></span></div>
+                            <div class="col-sm-4">Tipo de documento: <span id="tipo_documento"></span></div>
+                            <div class="col-sm-4">Numero de documento: <span id="numero_documento"></span></div>
+                            <div class="col-sm-4">Apellidos: <span id="apellidosa"></span></div>
+                            <div class="col-sm-4">Nombres: <span id="nombresa"></span></div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4">Telefono: <span id="telefono"></span></div>
                             <div class="col-sm-4">Correo: <span id="correo"></span></div>
-                            <div class="col-sm-4">area: <span id="area"></span></div>
+                            <div class="col-sm-4">area: <span id="areaa"></span></div>
                             <div class="col-sm-4">oficina: <span id="oficina"></span></div>
                         </div>
                     </p>

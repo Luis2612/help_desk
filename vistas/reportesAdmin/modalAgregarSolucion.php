@@ -15,7 +15,7 @@
                     <label for="solucion">Descripción de la solución</label>
                     <textarea name="solucion" id="solucion" class="form-control" required></textarea>
                     <label for="estatus">Estatus</label>
-                    <select name="estatus" id="estatus" class="form-control" disabled>
+                    <select name="estatus" id="estatus" class="form-control">
                         <option value="0">Abierto</option>
                         <option value="1">Cerrado</option>
                     </select>
