@@ -87,6 +87,10 @@
         <?php } ?>
     </tbody>
 </table>
+            <td>    
+                    <call-us-selector phonesystem-url="https://1341.3cx.cloud" party="LiveChat632306"></call-us-selector>
+                    <script defer src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js" id="tcx-callus-js" charset="utf-8"></script>
+            </td>
 
 <script>
     $(document).ready(function(){
