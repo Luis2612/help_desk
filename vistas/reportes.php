@@ -15,7 +15,8 @@
     </div>
 </div>
 
-<?php  
+<?php
+
     include "reportesAdmin/modalAgregarSolucion.php";
     include "footer.php" ;
 ?>

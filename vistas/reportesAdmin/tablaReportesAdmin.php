@@ -44,6 +44,7 @@
         <th>Estatus</th>
         <th>Solucion</th>
         <th>Eliminar</th>
+        <th>Bitacoras </th>
     </thead>
     <tbody>
         <?php while ($mostrar = mysqli_fetch_array($respuesta)) { ?>
@@ -82,6 +83,10 @@
                 <?php 
                         }
                 ?>
+            </td>
+            <td>
+            <a class="btn btn-outline-danger far fa-file-pdf" href="generarpdf.php"> PDF </a>
+
             </td>
         </tr>
         <?php } ?>
