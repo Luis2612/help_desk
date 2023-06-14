@@ -7,12 +7,15 @@
             $conexion = Conexion::conectar();
             $sql = "INSERT INTO t_reportes (id_usuario,
                                             id_equipo,
-                                            descripcion_problema)
-                    VALUES (?, ?, ?)";
+                                            descripcion_problema,
+                                            prioridad)
+                    VALUES (?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
-            $query->bind_param('iis', $datos['idUsuario'],
+            $query->bind_param('iiss', $datos['idUsuario'],
                                       $datos['idEquipo'],
-                                      $datos['problema']);
+                                      $datos['problema'],
+                                      $datos['prioridad']);
+
             $respuesta = $query->execute();
             $query->close();
             return $respuesta;
@@ -33,7 +36,7 @@
                 FROM t_reportes
                 WHERE id_reporte = '$idReporte'";
         $respuesta = mysqli_query($conexion, $sql);
-        $reporte = mysqli_fetch_array($respuesta);
+        $reporte = mysqli_fetch_array($respuesta);  
 
         $datos = array (
             "idReporte" => $idReporte,

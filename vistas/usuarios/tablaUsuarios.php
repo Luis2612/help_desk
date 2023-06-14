@@ -7,7 +7,7 @@
 	usuarios.usuario AS nombreUsuario,
 	roles.nombre AS rol,
     usuarios.id_rol AS idRol,
-	usuarios.area As area,
+	area.nombre As area,
     usuarios.activo AS estatus,
     usuarios.id_persona AS idPersona,
     persona.tipo_documento AS tipoDocumento,
@@ -22,7 +22,10 @@
     	INNER JOIN 
     t_cat_roles AS roles ON usuarios.id_rol = roles.id_rol 
     	INNER JOIN 
-    t_persona AS persona ON usuarios.id_persona = persona.id_persona";
+    t_persona AS persona ON usuarios.id_persona = persona.id_persona
+        INNER JOIN
+    areas AS area ON usuarios.area = area.ID    ";
+
 $respuesta = mysqli_query($conexion, $sql);
 ?>
 

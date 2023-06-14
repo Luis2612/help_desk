@@ -18,7 +18,8 @@
                 reporte.descripcion_problema AS problema,
                 reporte.estatus AS estatus,
                 reporte.solucion_problema AS solucion,
-                reporte.fecha AS fecha
+                reporte.fecha AS fecha,
+                reporte.prioridad AS prioridad
             FROM
                 t_reportes AS reporte
             INNER JOIN t_usuarios AS usuario
@@ -41,6 +42,7 @@
         <th>Dispositivo</th>
         <th>Fecha</th>
         <th>Descripcion</th>
+        <th>Prioridad</th>
         <th>Estatus</th>
         <th>Solucion</th>
         <th>Eliminar</th>
@@ -54,6 +56,7 @@
             <td><?php echo $mostrar['nombreEquipo'] ?></td>
             <td><?php echo $mostrar['fecha'] ?></td>
             <td><?php echo $mostrar['problema'] ?></td>
+            <td><?php echo $mostrar['prioridad']?>
             <td>
                 <?php  
                     $estatus = $mostrar['estatus'];
@@ -85,7 +88,8 @@
                 ?>
             </td>
             <td>
-            <a class="btn btn-outline-danger far fa-file-pdf" href="generarpdf.php"> PDF </a>
+            <a class="btn btn-outline-danger far fa-file-pdf" href="generarpdf.php?idUsuario=<?php echo $mostrar['idUsuario']; ?>"> PDF </a>
+
 
             </td>
         </tr>

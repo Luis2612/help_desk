@@ -5,8 +5,8 @@
 
             'idEquipo' => $_POST['idEquipo'],
             'problema' => $_POST['problema'],
-            'idUsuario' => $idUsuario
-
+            'idUsuario' => $idUsuario,
+            'prioridad' => $_POST['prioridad']
         );
 
 

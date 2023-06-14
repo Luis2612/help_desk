@@ -1,108 +1,186 @@
 <?php
-require('../fpdf/fpdf.php');
-require "../clases/conexion.php";
+        require ('../fpdf/fpdf.php');
 
-class PDF extends FPDF
-{
-    function Header()
-    {
-        $this->SetFont('Arial', 'B', 15);
-        $this->Cell(80);
-        $this->Cell(30, 10, 'Reporte de Bitacoras', 1, 0, 'C');
-        $this->Ln(20);
+        // Definir los datos de conexión
+        $servername = "localhost";  // Cambiar a la dirección de tu servidor de base de datos si es necesario
+        $username = "root";  // Cambiar al nombre de usuario de tu base de datos
+        $password = "";  // Cambiar a la contraseña de tu base de datos
+        $dbname = "helpdesk1";  // Cambiar al nombre de tu base de datos
+
+        // Crear la conexión
+        $conexion = new mysqli($servername, $username, $password, $dbname);
+
+        // Verificar si se produjo un error en la conexión
+        if ($conexion->connect_error) {
+            die("Error de conexión: " . $conexion->connect_error);
+        }
+
+        class PDF extends FPDF
+        {
+            // Cabecera de página
+            function Header()
+            {   
+                // Obtener el ID de la persona desde la URL
+                $idPersona = $_GET['idUsuario'];
+                global $conexion;
+                
+                // Obtener los datos de la persona desde la base de datos
+                $sql = "SELECT * FROM t_persona WHERE id_persona = $idPersona";
+                $resultado = mysqli_query($conexion, $sql);
+                $dato_info = mysqli_fetch_object($resultado);
+                
+                // Logo
+                $this->Image('../fpdf/tutorial/fondo.png', 5, 8, 15, 0);
+                
+                // Título
+                $this->SetFont('Arial','B',15);
+                $this->Cell(45);
+                $this->Cell(110,15,'FIANZAS DE COLOMBIA S.A',0,1,'C',0);
+                
+                // Tipo de documento
+                $this->SetFont("Arial", 'B', 10);
+                $this->SetTextColor(0, 180, 0); // Color rojo
+                $this->Cell(35, 10, utf8_decode("Tipo de documento:"), 0, 0, 'L');
+                $this->SetTextColor(0, 0, 0);//color negro
+                $this->SetFont("Arial", '', 10);
+                $tipoDocumento = trim(utf8_decode($dato_info->tipo_documento));
+                $this->Cell(60, 10, $tipoDocumento, 0, 1, 'L');
+                
+                // Número de documento
+                $this->SetFont("Arial", 'B', 10);
+                $this->SetTextColor(0, 180, 0); // Color rojo
+                $this->Cell(35, 10, utf8_decode("Número Documento:"), 0, 0, 'L');
+                $this->SetTextColor(0, 0, 0);//color negro
+                $this->SetFont("Arial", '', 10);
+                $numeroDocumento = trim(utf8_decode($dato_info->numero_documento));
+                $this->Cell(60, 10, $numeroDocumento, 0, 1, 'L');
+        
+                // Nombres
+                $this->SetFont("Arial", 'B', 10);
+                $this->SetTextColor(0, 180, 0); // Color rojo
+                $this->Cell(20, 10, utf8_decode("Nombres:"), 0, 0, 'L');
+                $this->SetTextColor(0, 0, 0);//color negro
+                $this->SetFont("Arial", '', 10);
+                $nombres = trim(utf8_decode($dato_info->nombres));
+                $this->Cell(60, 10, $nombres, 0, 0, 'L');
+        
+                // Apellidos
+                $this->SetFont("Arial", 'B', 10);
+                $this->SetTextColor(0, 180, 0); // Color rojo
+                $this->Cell(20, 10, utf8_decode("Apellidos:"), 0, 0, 'L');
+                $this->SetTextColor(0, 0, 0);//color negro
+                $this->SetFont("Arial", '', 10);
+                $apellidos = trim(utf8_decode($dato_info->apellidos));
+                $this->Cell(60, 10, $apellidos, 0, 1, 'L');
+        
+                // Teléfono
+                $this->SetFont("Arial", 'B', 10);
+                $this->SetTextColor(0, 180, 0); // Color rojo
+                $this->Cell(20, 10, utf8_decode("Teléfono:"), 0, 0, 'L');
+                $this->SetTextColor(0, 0, 0);//color negro
+                $this->SetFont("Arial", '', 10);
+                $telefono = trim(utf8_decode($dato_info->telefono));
+                $this->Cell(60, 10, $telefono, 0, 0, 'L');
+        
+                // Correo
+                $this->SetFont("Arial", 'B', 10);
+                $this->SetTextColor(0, 180, 0); // Color rojo
+                $this->Cell(15, 10, utf8_decode("Correo:"), 0, 0, 'L');
+                $this->SetTextColor(0, 0, 0);//color negro
+                $this->SetFont("Arial", '', 10);
+                $correo = trim(utf8_decode($dato_info->correo));
+                $this->Cell(60, 10, $correo, 0, 1, 'L');
+        
+                $this->Ln(10);
     }
-
+    
+    // Pie de página
     function Footer()
     {
+        // Posición: a 1,5 cm del final
         $this->SetY(-15);
-        $this->SetFont('Arial', 'I', 8);
-        $this->Cell(0, 10, 'Pagina ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
+    
+        // Número de página
+        $this->SetFont('Arial','I',8);
+        $this->Cell(0,10, utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
+    
+        // Guardar la posición actual
+        $position = $this->GetY();
+    
+        // Agregar firma del técnico
+        $this->SetY($position - 20); // Subir 2 cm
+        $this->SetFont('Arial','I',8);
+        $this->Cell(0, 10, utf8_decode('Firma del Técnico'), 0, 0, 'L');
+    
+        // Agregar firma del usuario
+        $this->SetY($position - 20); // Subir 2 cm
+        $this->SetFont('Arial','I',8);
+        $this->Cell(0, 10, utf8_decode('Firma del Usuario'), 0, 0, 'R');
+    
+        // Restaurar la posición original y agregar la fecha actual
+        $this->SetY($position);
+        $this->Cell(355, 10, utf8_decode(date('d/m/y')), 0, 0, 'C');
     }
-
-    function Content($datos)
-    {
-        $this->SetFont('Arial', '', 12);
-        $this->Cell(40, 10, 'Nombre del Usuario:', 0, 0, 'L');
-        $this->Cell(50, 10, $datos['nombrePersona'], 0, 1, 'L');
-
-        $this->Cell(40, 10, 'Equipo:', 0, 0, 'L');
-        $this->Cell(50, 10, $datos['nombreEquipo'], 0, 1, 'L');
-
-        $this->Cell(40, 10, 'Fecha:', 0, 0, 'L');
-        $this->Cell(50, 10, $datos['fecha'], 0, 1, 'L');
-
-        $this->Cell(40, 10, 'Problema:', 0, 0, 'L');
-        $this->MultiCell(0, 10, $datos['problema'], 0, 'L');
-
-        $this->Cell(40, 10, 'Estatus:', 0, 0, 'L');
-        $this->Cell(50, 10, $datos['estatus'], 0, 1, 'L');
-
-        $this->Cell(40, 10, 'Solucion:', 0, 0, 'L');
-        $this->MultiCell(0, 10, $datos['solucion'], 0, 'L');
-    }
+    
 }
 
-$pdf = new PDF();
-$pdf->AliasNbPages();
-$pdf->AddPage();
+// Obtener el ID del usuario desde la URL
+$idUsuario = $_GET['idUsuario'];
 
-// Obtener los datos del usuario y el reporte
-if (isset($mostrar) && is_array($mostrar)) {
-    // Aquí debes realizar la consulta a la base de datos para obtener los datos del usuario
-    $usuarioId = $mostrar['idUsuario'];
+// Consulta SQL para obtener los datos del usuario y otros campos necesarios
+$sql = "SELECT
+            CONCAT(persona.apellidos, ' ', persona.nombres) AS nombrePersona,
+            equipo.nombre AS nombreEquipo,
+            reporte.fecha AS fecha,
+            reporte.descripcion_problema AS problema,
+            reporte.estatus AS estatus,
+            reporte.solucion_problema AS solucion
+        FROM
+            t_reportes AS reporte
+        INNER JOIN t_usuarios AS usuario ON reporte.id_usuario = usuario.id_usuario
+        INNER JOIN t_persona AS persona ON usuario.id_persona = persona.id_persona
+        INNER JOIN t_cat_equipo AS equipo ON reporte.id_equipo = equipo.id_equipo
+        WHERE
+            usuario.id_usuario = $idUsuario";
 
-    // Realizar la consulta a la tabla t_usuarios
-    // Ajusta la consulta según la estructura de tu base de datos y las tablas
-    // Puedes usar JOIN para unir la tabla t_usuarios y t_personas
-    // Asegúrate de escapar y sanear los datos para evitar ataques de SQL Injection
-    $query = "SELECT 
-    t_asignacion.id_asignacion,
-    t_persona.nombres,
-    t_persona.apellidos,
-    areas.Nombre,
-    t_cat_equipo.nombre,
-    t_asignacion.marca,
-    t_asignacion.modelo,
-    t_asignacion.numero_asignacion,
-    t_asignacion.serial
-FROM
-    t_asignacion
-        INNER JOIN
-    t_persona ON t_asignacion.id_persona = t_persona.id_persona
-        INNER JOIN
-    areas ON t_persona.oficina = areas.ID
-        INNER JOIN
-    t_cat_equipo ON t_asignacion.id_equipo = t_cat_equipo.id_equipo
-WHERE
-    t_asignacion.id_persona = 24";
+// Ejecutar la consulta
+$resultado = mysqli_query($conexion, $sql);
 
-    // Ejecutar la consulta y obtener los resultados
-    // Asegúrate de ajustar el nombre de tu conexión a la base de datos y el método para obtener los resultados
-    $result = $conexion->query($query);
+// Verificar si se encontraron resultados
+if ($resultado && mysqli_num_rows($resultado) > 0) {
+    // Crear el objeto PDF
+    $pdf = new PDF();
+    $pdf->AddPage();
+    $pdf->AliasNbPages();
+    
+    // Obtener los datos del usuario
+    $datosUsuario = mysqli_fetch_assoc($resultado);
+    
+    // Mostrar los datos en el PDF
+    $pdf->SetFont('Arial', '', 12);
+    
 
-    if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    $pdf->Cell(0, 10, 'Persona: ' . $datosUsuario['nombrePersona'], 0, 1);
 
-        // Obtener los datos del usuario y el reporte
-        $datos = array(
-            'nombrePersona' => $row['nombres'] . ' ' . $row['apellidos'],
-            'nombreEquipo' => $mostrar['nombreEquipo'],
-            'fecha' => $mostrar['fecha'],
-            'problema' => $mostrar['problema'],
-            'estatus' => $mostrar['estatus'],
-            'solucion' => $mostrar['solucion']
-        );
+    $pdf->Cell(0, 10, 'Dispositivo: ' . $datosUsuario['nombreEquipo'], 0, 1);
 
-        // Generar el contenido del PDF
-        $pdf->Content($datos);
+    $pdf->Cell(0, 10, 'Fecha: ' . $datosUsuario['fecha'], 0, 1);
+    
+    $pdf->Cell(0, 10, utf8_decode('Descripción: ' . $datosUsuario['problema']), 0, 1);
+    
+    // Mostrar el estado
+    $estado = $datosUsuario['estatus'];
+    if ($estado == 1) {
+        $estadoLabel = 'Cerrado';
+    } elseif ($estado == 0) {
+        $estadoLabel = 'Abierto';
     } else {
-        // Mostrar un mensaje de error o redireccionar si los datos no están disponibles
-        $pdf->Cell(0, 10, 'Error: No se encontraron datos para generar el PDF', 0, 1, 'C');
+        $estadoLabel = 'Desconocido';
     }
-} else {
-    // Mostrar un mensaje de error o redireccionar si los datos no están disponibles
-    $pdf->Cell(0, 10, 'Error: No se encontraron datos para generar el PDF', 0, 1, 'C');
+    $pdf->Cell(0, 10, 'Estatus: ' . $estadoLabel, 0, 1);
+    
+    $pdf->Cell(0, 10 ,utf8_decode( 'Solución: ' . $datosUsuario['solucion']), 0, 1);
 }
 
-$pdf->Output();
+$pdf->Output('prueba.pdf', 'I');
 ?>
