@@ -65,6 +65,11 @@
                             <span class="fas fa-file-alt"></span> Reportes
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mantenimientos.php">
+                            <span class="fas fa-file-alt"></span> Mantenimientos
+                        </a>
+                    </li>
                     <?php }?>
                     <li class="nav-item dropdown">
                         <a style="color:red" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"

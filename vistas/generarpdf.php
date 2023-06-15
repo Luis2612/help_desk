@@ -144,42 +144,41 @@ $sql = "SELECT
             usuario.id_usuario = $idUsuario";
 
 // Ejecutar la consulta
-$resultado = mysqli_query($conexion, $sql);
+        $resultado = mysqli_query($conexion, $sql);
 
-// Verificar si se encontraron resultados
-if ($resultado && mysqli_num_rows($resultado) > 0) {
-    // Crear el objeto PDF
-    $pdf = new PDF();
-    $pdf->AddPage();
-    $pdf->AliasNbPages();
-    
-    // Obtener los datos del usuario
-    $datosUsuario = mysqli_fetch_assoc($resultado);
-    
-    // Mostrar los datos en el PDF
-    $pdf->SetFont('Arial', '', 12);
-    
+        // Verificar si se encontraron resultados
+        if ($resultado && mysqli_num_rows($resultado) > 0) {
+            // Crear el objeto PDF
+            $pdf = new PDF();
+            $pdf->AddPage();
+            $pdf->AliasNbPages();
+            
+            // Obtener los datos del usuario
+            $datosUsuario = mysqli_fetch_assoc($resultado);
+            
+            // Mostrar los datos en el PDF
+            $pdf->SetFont('Arial', '', 12);
+            
 
-    $pdf->Cell(0, 10, 'Persona: ' . $datosUsuario['nombrePersona'], 0, 1);
 
-    $pdf->Cell(0, 10, 'Dispositivo: ' . $datosUsuario['nombreEquipo'], 0, 1);
+            $pdf->Cell(0, 10, 'Dispositivo: ' . $datosUsuario['nombreEquipo'], 0, 1);
 
-    $pdf->Cell(0, 10, 'Fecha: ' . $datosUsuario['fecha'], 0, 1);
-    
-    $pdf->Cell(0, 10, utf8_decode('Descripción: ' . $datosUsuario['problema']), 0, 1);
-    
-    // Mostrar el estado
-    $estado = $datosUsuario['estatus'];
-    if ($estado == 1) {
-        $estadoLabel = 'Cerrado';
-    } elseif ($estado == 0) {
-        $estadoLabel = 'Abierto';
-    } else {
-        $estadoLabel = 'Desconocido';
-    }
-    $pdf->Cell(0, 10, 'Estatus: ' . $estadoLabel, 0, 1);
-    
-    $pdf->Cell(0, 10 ,utf8_decode( 'Solución: ' . $datosUsuario['solucion']), 0, 1);
+            $pdf->Cell(0, 10, 'Fecha: ' . $datosUsuario['fecha'], 0, 1);
+            
+            $pdf->Cell(0, 10, utf8_decode('Descripción: ' . $datosUsuario['problema']), 0, 1);
+            
+            // Mostrar el estado
+            $estado = $datosUsuario['estatus'];
+            if ($estado == 1) {
+                $estadoLabel = 'Cerrado';
+            } elseif ($estado == 0) {
+                $estadoLabel = 'Abierto';
+            } else {
+                $estadoLabel = 'Desconocido';
+            }
+            $pdf->Cell(0, 10, 'Estatus: ' . $estadoLabel, 0, 1);
+            
+            $pdf->Cell(0, 10 ,utf8_decode( 'Solución: ' . $datosUsuario['solucion']), 0, 1);
 }
 
 $pdf->Output('prueba.pdf', 'I');
