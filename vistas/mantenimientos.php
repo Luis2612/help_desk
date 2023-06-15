@@ -71,9 +71,9 @@
     <?php
     include "footer.php";
     ?>
-</body>
-</html>
+    </body>
+    </html>
 
-<?php
-    } 
-?>
+    <?php
+        } 
+    ?>

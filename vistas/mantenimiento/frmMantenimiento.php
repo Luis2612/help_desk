@@ -11,7 +11,7 @@
         <div class="card border-0 shadow my-5">
             <div class="card-body p-5">
                 <h1 class="fw-light">Formulario de Mantenimientos</h1>
-                <form action="guardar_mantenimiento.php" method="POST">
+                <form method="POST">
                     <div class="mb-3">
                         <label for="usuario" class="form-label">Usuario:</label>
                         <select name="usuario" id="usuario" class="form-select">
