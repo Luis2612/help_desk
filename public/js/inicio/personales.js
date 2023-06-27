@@ -1,9 +1,10 @@
-function datosPersonalesInicio (idUsuario){
+// Obtener los datos personales al inicio
+function datosPersonalesInicio(idUsuario) {
     $.ajax({
-        type: "POST",
-        data:"idUsuario=" + idUsuario,
-        url:"../procesos/usuarios/crud/obtenerDatosUsuario.php",
-        success:function (respuesta) {
+        type: 'POST',
+        data: 'idUsuario=' + idUsuario,
+        url: '../procesos/usuarios/crud/obtenerDatosUsuario.php',
+        success: function(respuesta) {
             respuesta = jQuery.parseJSON(respuesta);
             $('#tipo_documento').text(respuesta['tipoDocumento']);
             $('#numero_documento').text(respuesta['numeroDocumento']);
@@ -14,5 +15,5 @@ function datosPersonalesInicio (idUsuario){
             $('#areaa').text(respuesta['area']);
             $('#oficina').text(respuesta['oficina']);
         }
-    })
+    });
 }

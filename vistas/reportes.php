@@ -1,5 +1,7 @@
 <?php
     include "header.php";
+
+    // Verifica si hay una sesión activa y si el rol del usuario es igual a 2
     if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 2) { 
 ?>
 
@@ -17,6 +19,7 @@
 
 <?php
 
+    // Incluye el archivo modalAgregarSolucion.php para los reportes administrativos
     include "reportesAdmin/modalAgregarSolucion.php";
     include "footer.php" ;
 ?>

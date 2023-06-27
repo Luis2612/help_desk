@@ -1,6 +1,7 @@
-
 <?php
     include "header.php";
+
+    // Verifica si hay una sesión activa y si el rol del usuario es igual a 1
     if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1) { 
         include "../clases/conexion.php";
         $con = new Conexion();
@@ -19,18 +20,19 @@
                     <hr>
                     <div id="tablaReporteClienteLoad"></div>
                 </p>
-    </div>    
+            </div>    
         </div>
     </div>
 
     <?php
+    // Incluye el archivo modalCrearReporte.php para los reportes de cliente
     include "reportesCliente/modalCrearReporte.php";
     include "footer.php";
     ?>
     <script src="../public/js/reportesCliente/reportes.js"></script>
     <?php
             
-            } else {
-                header("location:../index.html");
-            }
-    ?> 
+    } else {
+        header("location:../index.html");
+    }
+?> 

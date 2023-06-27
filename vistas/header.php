@@ -1,7 +1,6 @@
 <?php
-    session_start();
+    session_start(); // Inicia la sesión
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,86 +19,80 @@
 </head>
 
 <body>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
-        <div class="container">
-            <a class="navbar-brand" href="inicio.php">
-                <img src="../public/img/fondo.png" width="30%">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="inicio.php">
-                            <span class="fas fa-home"></span>Inicio
-                        </a>
-                    </li>
-                    <?php if($_SESSION['usuario']['rol'] == 1){?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="misDispositivos.php">
-                            <span class="fas fa-microchip"></span>Mis Dispositivos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="misReportes.php">
-                            <span class="fas fa-file-alt"></span> Reportes
-                        </a>
-                    </li>
-                    <?php } else if ($_SESSION['usuario']['rol'] == 2){?>
-                    <!--De aqui son las vistas del administrador-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="usuarios.php">
-                            <span class="fas fa-users-cog"></span> Usuarios
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="asignacion.php">
-                            <span class="fas fa-address-book"></span> Asignacion de equipos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="reportes.php">
-                            <span class="fas fa-file-alt"></span> Reportes
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mantenimientos.php">
-                            <span class="fas fa-file-alt"></span> Mantenimientos
-                        </a>
-                    </li>
-                    <?php }?>
-                    <li class="nav-item dropdown">
-                        <a style="color:red" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
-                            <span class="fas fa-user-ninja"></span> Usuario: <?php echo $_SESSION['usuario']['nombre'];?>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"
-                            data-toggle="modal" 
-                            data-target="#modalActualizarDatosPersonales" onclick="obtenerDatosPersonalesInicio('<?php echo $_SESSION['usuario']['id']; ?>')">
-                            <span class="fas fa-user-edit"></span> Editar datos</a>
-
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../procesos/usuarios/login/salir.php">
-                                <span class="fas fa-sign-out-alt"></span> Salir
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+            <div class="container">
+                <a class="navbar-brand" href="inicio.php">
+                    <img src="../public/img/fondo.png" width="30%">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="inicio.php">
+                                <span class="fas fa-home"></span>Inicio
                             </a>
-                            
-                        </div>
-                        
-                    </li>
-                </ul>
+                        </li>
+                        <?php if($_SESSION['usuario']['rol'] == 1){?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="misDispositivos.php">
+                                <span class="fas fa-microchip"></span>Mis Dispositivos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="misReportes.php">
+                                <span class="fas fa-file-alt"></span> Reportes
+                            </a>
+                        </li>
+                        <?php } else if ($_SESSION['usuario']['rol'] == 2){?>
+                        <!-- De aquí son las vistas del administrador -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="usuarios.php">
+                                <span class="fas fa-users-cog"></span> Usuarios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="asignacion.php">
+                                <span class="fas fa-address-book"></span> Asignacion de equipos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.php">
+                                <span class="fas fa-file-alt"></span> Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mantenimientos.php">
+                                <span class="fas fa-file-alt"></span> Mantenimientos
+                            </a>
+                        </li>
+                        <?php }?>
+                        <li class="nav-item dropdown">
+                            <a style="color:red" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                aria-expanded="false">
+                                <span class="fas fa-user-ninja"></span> Usuario: <?php echo $_SESSION['usuario']['nombre'];?>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalActualizarDatosPersonales"
+                                    onclick="obtenerDatosPersonalesInicio('<?php echo $_SESSION['usuario']['id']; ?>')">
+                                    <span class="fas fa-user-edit"></span> Editar datos
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../procesos/usuarios/login/salir.php">
+                                    <span class="fas fa-sign-out-alt"></span> Salir
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            
-        </div>
-    </nav>
-                            
+        </nav>
 
-                        
-                    </body>
-
-    <?php 
-        include "inicio/modalActualizarDatosPersonales.php";
-    ?>
+        <?php 
+            include "inicio/modalActualizarDatosPersonales.php"; // Incluye el archivo modalActualizarDatosPersonales.php
+        ?>
+</body>
