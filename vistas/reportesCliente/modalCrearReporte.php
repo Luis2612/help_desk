@@ -19,22 +19,22 @@
             
             // Consulta SQL para obtener los dispositivos asignados al usuario
             $sql = "SELECT
-                asignacion.id_asignacion AS idAsignacion,
-                equipo.id_equipo AS idEquipo,
-                equipo.nombre AS nombreEquipo,
-                asignacion.numero_asignacion AS numeroAsignacion
-              FROM
-                t_asignacion AS asignacion
-              INNER JOIN 
-                t_cat_equipo AS equipo ON asignacion.id_equipo = equipo.id_equipo
-              WHERE
-                asignacion.id_persona = (SELECT
-                                          id_persona
-                                        FROM
-                                          t_usuarios
-                                        WHERE 
-                                          id_usuario = '$idUsuario')";
-            
+                      asignacion.id_asignacion AS idAsignacion,
+                      equipo.id_equipo AS idEquipo,
+                      equipo.nombre AS nombreEquipo,
+                      asignacion.numero_asignacion AS numeroAsignacion
+                    FROM
+                      t_asignacion AS asignacion
+                    INNER JOIN 
+                      t_cat_equipo AS equipo ON asignacion.id_equipo = equipo.id_equipo
+                    WHERE
+                      asignacion.id_persona = (SELECT
+                                                id_persona
+                                              FROM
+                                                t_usuarios
+                                              WHERE 
+                                                id_usuario = '$idUsuario')";
+                  
             // Ejecuta la consulta SQL
             $respuesta = mysqli_query($conexion, $sql);              
           ?>

@@ -8,6 +8,6 @@
         );
    
 
-    include "../../clases/Reportes.php";
-    $Reportes = new Reportes();
-    echo $Reportes->actualizarSolucion($datos);
+            include "../../clases/Reportes.php";
+            $Reportes = new Reportes();
+            echo $Reportes->actualizarSolucion($datos);

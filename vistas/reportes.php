@@ -21,7 +21,7 @@
 
     // Incluye el archivo modalAgregarSolucion.php para los reportes administrativos
     include "reportesAdmin/modalAgregarSolucion.php";
-    include "footer.php" ;
+    include "footer.php";
 ?>
 <script src="../public/js/reportesAdmin/reportesAdmin.js"></script>
 

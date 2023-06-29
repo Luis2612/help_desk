@@ -66,11 +66,11 @@
         <tr>
             <td><?php echo $contador++; ?></td>
             <td><?php echo $mostrar['nombrePersona']; ?></td>
-            <td><?php echo $mostrar['nombreEquipo'] ?></td>
-            <td><?php echo $mostrar['numeroAsignacion']?></td>
-            <td><?php echo $mostrar['fecha'] ?></td>
-            <td><?php echo $mostrar['problema'] ?></td>
-            <td><?php echo $mostrar['prioridad']?></td>
+            <td><?php echo $mostrar['nombreEquipo']; ?></td>
+            <td><?php echo $mostrar['numeroAsignacion'];?></td>
+            <td><?php echo $mostrar['fecha']; ?></td>
+            <td><?php echo $mostrar['problema']; ?></td>
+            <td><?php echo $mostrar['prioridad'];?></td>
             <td>
                 <?php  
                     $estatus = $mostrar['estatus'];
