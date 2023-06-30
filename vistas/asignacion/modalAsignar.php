@@ -5,17 +5,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Asignar equipo</h5>
-                    <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                        <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
 
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-6">
                             <label>Nombre de persona</label>
-                            <?php
-                            $sql = "SELECT 
+                                <?php
+                                    $sql = "SELECT 
                                         persona.id_persona, 
                                         CONCAT(persona.nombres) AS nombres
                                     FROM 
@@ -24,26 +24,26 @@
                                         t_usuarios AS usuario ON persona.id_persona = usuario.id_persona
                                         AND usuario.id_rol = 1 
                                     ORDER BY persona.nombres";
-                            $respuesta = mysqli_query($conexion, $sql);
-                            ?>
+                                    $respuesta = mysqli_query($conexion, $sql);
+                                ?>
                             <select name="idPersona" id="idPersona" class="form-control" required>
                                 <option value="">Seleccione una opción</option>
-                                <?php while($mostrar = mysqli_fetch_array($respuesta)) { ?>
-                                    <option value="<?php echo $mostrar['id_persona']; ?>"><?php echo $mostrar['nombres']; ?></option>
-                                <?php } ?>
+                                    <?php while($mostrar = mysqli_fetch_array($respuesta)) { ?>
+                                        <option value="<?php echo $mostrar['id_persona']; ?>"><?php echo $mostrar['nombres']; ?></option>
+                                    <?php } ?>
                             </select>
                         </div>
                         <div class="col-sm-6">
                             <label>Tipo de equipo</label>
                             <?php
-                            $sql = "SELECT id_equipo, nombre FROM t_cat_equipo ORDER BY nombre";
-                            $respuesta = mysqli_query($conexion, $sql);
+                                $sql = "SELECT id_equipo, nombre FROM t_cat_equipo ORDER BY nombre";
+                                $respuesta = mysqli_query($conexion, $sql);
                             ?>
                             <select name="idEquipo" id="idEquipo" class="form-control" required>
                                 <option value="">Seleccione una opción</option>
-                                <?php while($mostrar = mysqli_fetch_array($respuesta)) { ?>
-                                    <option value="<?php echo $mostrar['id_equipo']; ?>"><?php echo $mostrar['nombre']; ?></option>
-                                <?php } ?>
+                                    <?php while($mostrar = mysqli_fetch_array($respuesta)) { ?>
+                                <option value="<?php echo $mostrar['id_equipo']; ?>"><?php echo $mostrar['nombre']; ?></option>
+                                    <?php } ?>
                             </select>
                         </div>
                     </div>
